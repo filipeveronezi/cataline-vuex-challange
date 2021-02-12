@@ -1,21 +1,39 @@
 <template>
-  <h1>Hello</h1>
+  <div id="container">
+    <Background />
+    <Card />
+  </div>
 </template>
 
 <script>
+import Background from './components/Background'
+import Card from './components/Card'
 export default {
   name: 'App',
-  components: {}
+  components: {
+    Background,
+    Card
+  },
+  created() {},
+  data() {
+    return {}
+  }
 }
 </script>
 
 <style>
+@import './assets/css/reset.css';
+@import './assets/css/main.css';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  width: 100%;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
 }
 </style>
