@@ -6,6 +6,7 @@ export default createStore({
     faqCategories: [],
     faqs: [],
     faq: [],
+    transition: '',
     depth: 0
   },
   mutations: {
@@ -17,6 +18,9 @@ export default createStore({
     },
     SET_FAQ(state, payload) {
       state.faq = payload
+    },
+    SET_TRANSITION(state, payload) {
+      state.transition = payload
     },
     SET_DEPTH(state, payload) {
       state.depth = payload
@@ -37,6 +41,9 @@ export default createStore({
       )
       context.commit('SET_FAQ', faq)
     },
+    setTransition(context, transition) {
+      context.commit('SET_TRANSITION', transition)
+    },
     setDepth(context, value) {
       context.commit('SET_DEPTH', value)
     }
@@ -50,6 +57,9 @@ export default createStore({
     },
     $faq(state) {
       return state.faq
+    },
+    $transition(state) {
+      return state.transition
     },
     $depth(state) {
       return state.depth

@@ -35,6 +35,7 @@ export default {
     nextDepth(faqId) {
       this.$store.dispatch('fetchFaq', faqId)
       this.$store.dispatch('setDepth', 3)
+      this.$store.dispatch('setTransition', 'left')
     }
   }
 }

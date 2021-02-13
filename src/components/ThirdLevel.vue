@@ -27,19 +27,21 @@ export default {
 .title {
   align-self: center;
   justify-self: center;
-  width: 100%;
-  text-align: center;
+  width: 50%;
+  text-align: left;
+  line-height: 1.2rem;
   padding: 25px 0 0 0;
   height: 100%;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 16px;
   color: #f5f6f8;
 }
 
 .content {
+  height: 100%;
   font-size: 13px;
   color: #f5f6f8;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
   padding: 0 20px;
   letter-spacing: 0.02rem;
 }

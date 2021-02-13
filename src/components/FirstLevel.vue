@@ -37,6 +37,7 @@ export default {
     nextDepth(faqCategorieId) {
       this.$store.dispatch('fetchFaqs', faqCategorieId)
       this.$store.dispatch('setDepth', 2)
+      this.$store.dispatch('setTransition', 'left')
     }
   }
 }

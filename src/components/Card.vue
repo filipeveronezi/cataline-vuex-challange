@@ -7,7 +7,9 @@
     >
       <img src="../assets/images/back.svg" alt="Voltar" />
     </button>
-    <component :is="currentComponent" />
+    <transition :name="$transition" mode="out-in">
+      <component :is="currentComponent" />
+    </transition>
   </div>
 </template>
 
@@ -28,6 +30,9 @@ export default {
       else if (depth == 2) return 'SecondLevel'
       else if (depth == 3) return 'ThirdLevel'
       else return ''
+    },
+    $transition() {
+      return this.$store.getters.$transition
     }
   },
   methods: {
@@ -35,6 +40,7 @@ export default {
       const depth = this.$store.getters.$depth
       if (depth == 2) this.$store.dispatch('setDepth', 1)
       else if (depth == 3) this.$store.dispatch('setDepth', 2)
+      this.$store.dispatch('setTransition', 'right')
     }
   }
 }
@@ -74,5 +80,38 @@ export default {
 .back img {
   width: 20px;
   height: 20px;
+}
+
+/* Transitions */
+.left-enter-from,
+.right-enter-from {
+  opacity: 0;
+}
+
+.left-enter-active,
+.right-enter-active,
+.left-leave-active,
+.right-leave-active {
+  transition: 0.2s;
+}
+
+.left-enter-to,
+.right-enter-to {
+  opacity: 1;
+}
+
+.left-leave-from,
+.right-leave-from {
+  opacity: 1;
+}
+
+.left-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.right-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
 }
 </style>
