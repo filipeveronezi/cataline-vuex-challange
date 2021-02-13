@@ -14,9 +14,9 @@ export default {
     Background,
     Card
   },
-  created() {},
-  data() {
-    return {}
+  created() {
+    this.$store.dispatch('fetchFaqCategories')
+    this.$store.dispatch('setDepth', 1)
   }
 }
 </script>

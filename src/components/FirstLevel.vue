@@ -9,45 +9,37 @@
       <h1>Perguntas frequentes</h1>
       <h2>Escolha a categoria desejada</h2>
     </section>
-    <div class="buttons">
-      <button class="btn">
-        <img
-          class="icon"
-          src="../assets/images/rocket.svg"
-          alt="Ícone de foguete"
-        />
-        Basecamp
-      </button>
-      <button class="btn">
-        <img
-          class="icon"
-          src="../assets/images/astronaut-helmet.svg"
-          alt="Ícone de capacete de astronauta"
-        />
-        Bootcamp
-      </button>
-      <button class="btn">
-        <img
-          class="icon"
-          src="../assets/images/student-hat.svg"
-          alt="Ícone de chapéu de estudante"
-        />
-        Cataline
-      </button>
-      <button class="btn">
-        <img
-          class="icon"
-          src="../assets/images/partnership.svg"
-          alt="Ícone de parcerias'"
-        />
-        Parcerias
-      </button>
-    </div>
+    <ul class="options">
+      <li
+        class="btn"
+        v-for="faqCategorie in $allFaqCategories"
+        :key="faqCategorie.id"
+        @click="nextDepth(faqCategorie.id)"
+      >
+        <img :src="getIcon(faqCategorie)" class="icon" />
+        {{ faqCategorie.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    $allFaqCategories() {
+      return this.$store.getters.$allFaqCategories
+    }
+  },
+  methods: {
+    getIcon(item) {
+      return require(`../assets/images/${item.icon}`)
+    },
+    nextDepth(faqCategorieId) {
+      this.$store.dispatch('fetchFaqs', faqCategorieId)
+      this.$store.dispatch('setDepth', 2)
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -86,7 +78,7 @@ export default {}
   margin-top: 10px;
 }
 
-.buttons {
+.options {
   display: grid;
   grid: 1fr 1fr 1fr 1fr / 1fr;
 }
