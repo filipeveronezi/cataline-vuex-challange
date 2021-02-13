@@ -1,5 +1,6 @@
 <template>
   <div id="second-level">
+    <component :is="'BackButton'" class="back-button" />
     <header class="container">
       <div class="titles">
         <h1>{{ $faqCategorie.title }}</h1>
@@ -22,7 +23,12 @@
 </template>
 
 <script>
+import BackButton from '../components/BackButton'
+
 export default {
+  components: {
+    BackButton
+  },
   computed: {
     $faqCategorie() {
       return this.$store.getters.$allFaqs[0]
@@ -50,6 +56,12 @@ export default {
   align-content: center;
   justify-content: center;
   padding: 20px 0 0 0;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  margin: 15px 0 0 12px;
 }
 
 .container {

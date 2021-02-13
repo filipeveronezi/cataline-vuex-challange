@@ -1,12 +1,5 @@
 <template>
   <div id="card">
-    <button
-      class="back"
-      v-if="currentComponent != 'FaqCategories'"
-      @click="goBack"
-    >
-      <img src="../assets/images/back.svg" alt="Voltar" />
-    </button>
     <transition :name="$transition" mode="out-in">
       <component :is="currentComponent" />
     </transition>
@@ -34,14 +27,6 @@ export default {
     $transition() {
       return this.$store.getters.$transition
     }
-  },
-  methods: {
-    goBack() {
-      const depth = this.$store.getters.$depth
-      if (depth == 2) this.$store.dispatch('setDepth', 1)
-      else if (depth == 3) this.$store.dispatch('setDepth', 2)
-      this.$store.dispatch('setTransition', 'right')
-    }
   }
 }
 </script>
@@ -58,28 +43,9 @@ export default {
   position: relative;
 }
 
-.back {
-  width: 37px;
-  height: 30px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  background: none;
-  position: fixed;
-  margin: 18px 0 0 10px;
-  transition: background 0.3s;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-}
-
-.back:hover {
-  background: #111111cc;
-}
-
-.back img {
-  width: 20px;
-  height: 20px;
+#content {
+  height: 100%;
+  width: 100%;
 }
 
 /* Transitions */

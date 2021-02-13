@@ -1,12 +1,18 @@
 <template>
   <div id="third-level">
+    <component :is="'BackButton'" class="back-button" />
     <h1 class="title">{{ $faq.title }}</h1>
     <div class="content" v-html="$faq.content"></div>
   </div>
 </template>
 
 <script>
+import BackButton from '../components/BackButton'
+
 export default {
+  components: {
+    BackButton
+  },
   computed: {
     $faq() {
       return this.$store.getters.$faq[0]
@@ -24,13 +30,18 @@ export default {
   font-family: Lato;
 }
 
+.back-button {
+  position: absolute;
+  margin: 15px 0 0 12px;
+}
+
 .title {
   align-self: center;
   justify-self: center;
   width: 50%;
   text-align: left;
   line-height: 1.2rem;
-  padding: 25px 0 0 0;
+  padding: 20px 0 0 0;
   height: 100%;
   font-weight: 400;
   font-size: 16px;
