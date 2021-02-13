@@ -14,21 +14,21 @@
 </template>
 
 <script>
-import FirstLevel from './FirstLevel'
-import SecondLevel from './SecondLevel'
-import ThirdLevel from './ThirdLevel'
+import FaqCategories from './FaqCategories'
+import Questions from './Questions'
+import Answer from './Answer'
 export default {
   components: {
-    FirstLevel,
-    SecondLevel,
-    ThirdLevel
+    FaqCategories,
+    Questions,
+    Answer
   },
   computed: {
     currentComponent() {
       const depth = this.$store.getters.$depth
-      if (depth == 1) return 'FirstLevel'
-      else if (depth == 2) return 'SecondLevel'
-      else if (depth == 3) return 'ThirdLevel'
+      if (depth == 1) return 'FaqCategories'
+      else if (depth == 2) return 'Questions'
+      else if (depth == 3) return 'Answer'
       else return ''
     },
     $transition() {
