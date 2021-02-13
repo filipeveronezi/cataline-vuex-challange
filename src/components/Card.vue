@@ -2,7 +2,7 @@
   <div id="card">
     <button
       class="back"
-      v-if="currentComponent != 'FirstLevel'"
+      v-if="currentComponent != 'FaqCategories'"
       @click="goBack"
     >
       <img src="../assets/images/back.svg" alt="Voltar" />
